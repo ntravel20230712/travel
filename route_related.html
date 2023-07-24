@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
+    <!-- 隨機行程瀏覽 route_random.php -->
     <meta charset="utf-8">
-    <title>route recommend</title>
+    <title>route show</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -42,6 +43,7 @@
         </div>
     </div>
     <!-- Spinner End -->
+
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
@@ -100,26 +102,20 @@
     <!-- Navbar End -->
 
 
-
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">推薦你的行程給更多人吧!!!</h6>
-                <h1 class="mb-5">分享路線</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="img/taiwan.png" alt="">
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <section class="intro">
-                        <div class="bg-image h-100" style="background-color: #f5f7fa;">
-                            <div class="mask d-flex align-items-center h-100">
-                                <div class="container">
+                <h6 class="section-title bg-white text-center text-primary px-3">行程瀏覽</h6>
+                <h1 class="mb-5">有關"安平古堡"的行程</h1>
 
-                                    <div class="row justify-content-center">
-                                        <div class="col-12">
+                <div class="row g-4">
+                    <div class="wow fadeInUp" data-wow-delay="0.3s">
+                        <section class="intro">
+                            <div class="bg-image h-100" style="background-color: #f5f7fa;">
+                                <div class="mask d-flex align-items-center h-100">
+                                    <div class="container">
+                                        <div class="row justify-content-center">
                                             <div class="card">
                                                 <div class="card-body p-0">
                                                     <div class="table-responsive table-scroll"
@@ -128,48 +124,68 @@
                                                         <table class="table table-striped mb-0">
                                                             <thead style="background-color: #424242;">
                                                                 <tr>
-                                                                    <th scope="col">景點</th>
-                                                                    <th scope="col">類型</th>
+                                                                    <th scope="col">路線名</th>
+                                                                    <th scope="col">縣市</th>
+                                                                    <th scope="col">遊玩日期</th>
                                                                     <th scope="col">時間</th>
-                                                                    <th scope="col">備註</th>
+                                                                    <th scope="col">標籤</th>
+                                                                    <th scope="col">推薦數</th>
+                                                                    <th scope="col">上傳日期</th>
+                                                                    <th scope="col"></th>
+                                                                    <th scope="col"></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>奇美博物館</td>
-                                                                    <td>遊</td>
-                                                                    <td>11:00</td>
-                                                                    <td>要提前到</td>
+                                                                    <td>悠遊台南行</td>
+                                                                    <td>台南市</td>
+                                                                    <td>2023/5/17</td>
+                                                                    <td>10:00</td>
+                                                                    <td>親子同樂</td>
+                                                                    <td>12</td>
+                                                                    <td>2023/4/8</td>
+                                                                    <td><a href="route_detail.html">查看詳細</a></td>
+                                                                    <td>
+                                                                        <input type="checkbox" class="btn-check"
+                                                                            id="btn-check-1-outlined"
+                                                                            autocomplete="off">
+                                                                        <label class="px-3 btn btn-outline-secondary"
+                                                                            for="btn-check-1-outlined">加入收藏</label>
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>原燒-台南永華店</td>
-                                                                    <td>食</td>
-                                                                    <td>12:30</td>
-                                                                    <td>無</td>
+                                                                    <td>文藝復興台南路線</td>
+                                                                    <td>台南市</td>
+                                                                    <td>2023/5/26</td>
+                                                                    <td>9:00</td>
+                                                                    <td>悠閒行程</td>
+                                                                    <td>2</td>
+                                                                    <td>2023/5/16</td>
+                                                                    <td><a href="#">查看詳細</a></td>
+                                                                    <td>
+                                                                        <input type="checkbox" class="btn-check"
+                                                                            id="btn-check-2-outlined"
+                                                                            autocomplete="off">
+                                                                        <label class="px-3 btn btn-outline-secondary"
+                                                                            for="btn-check-2-outlined">加入收藏</label>
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>赤崁樓</td>
-                                                                    <td>遊</td>
-                                                                    <td>14:30</td>
-                                                                    <td>多拍點照</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>十鼓仁糖文創園區</td>
-                                                                    <td>遊</td>
-                                                                    <td>16:30</td>
-                                                                    <td>無</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>四草綠色隧道</td>
-                                                                    <td>遊</td>
-                                                                    <td>18:30</td>
-                                                                    <td>一定要坐船</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>漢來海港餐廳</td>
-                                                                    <td>時</td>
-                                                                    <td>20:00</td>
-                                                                    <td>提早訂位</td>
+                                                                    <td>復古綠油油台南路線</td>
+                                                                    <td>台南市</td>
+                                                                    <td>2023/4/26</td>
+                                                                    <td>15:00</td>
+                                                                    <td>親子同樂、活力行程</td>
+                                                                    <td>24</td>
+                                                                    <td>2023/3/9</td>
+                                                                    <td><a href="#">查看詳細</a></td>
+                                                                    <td>
+                                                                        <input type="checkbox" class="btn-check"
+                                                                            id="btn-check-3-outlined"
+                                                                            autocomplete="off">
+                                                                        <label class="px-3 btn btn-outline-secondary"
+                                                                            for="btn-check-3-outlined">加入收藏</label>
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -180,44 +196,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                     </section>
-                </div>
-                <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="date" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name">遊玩日期</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    <label for="subject">行程名稱</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <h4 class="mb-1">添加標籤</h1>
-                                    <input type="checkbox" class="btn-check" id="btn-check-1-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-secondary" for="btn-check-1-outlined">親子同樂</label>
-                                    <input type="checkbox" class="btn-check" id="btn-check-2-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined">活力行程</label>
-                                    <input type="checkbox" class="btn-check" id="btn-check-3-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-secondary" for="btn-check-3-outlined">悠閒行程</label>
-                                    <input type="checkbox" class="btn-check" id="btn-check-4-outlined"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-secondary" for="btn-check-4-outlined">美食行程</label><br>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">送出</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
