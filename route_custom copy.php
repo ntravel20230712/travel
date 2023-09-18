@@ -34,73 +34,106 @@
   <link href="css/tile_styles.css" rel="stylesheet" media="all">
 
 
-  <?php
-		session_start();
-    $_SESSION['mem_id']="4";
-    $mem_name=$_SESSION['mem_id'];
+      <?php
+    session_start(); // 開始 session，如果尚未開始
 
-		?>
-  <style>
+    if (!isset($_SESSION['mem_id'])) {
+        echo "<script>
+            if (confirm('請先登入開啟此功能')) {
+                window.location.href = 'login.html';
+            } else {
+                history.go(-1);
+            }
+            </script>";
+        exit;
+    }
 
-  </style>
+    $mem_name = $_SESSION['mem_id'];
+    // 其他代碼
+    ?>
+
+
+
+
+
 
 </head>
 
 <body>
-  <!-- Navbar Start -->
-  <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-      <h2 class="m-0 text-primary"><i class="fa fa-flag me-3"></i>newTRAVEL</h2>
-    </a>
-    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <div class="navbar-nav ms-auto p-4 p-lg-0">
-        <a href="index.html" class="nav-item nav-link active">首頁</a>
-        <a href="about.html" class="nav-item nav-link">關於我們</a>
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">景點瀏覽</a>
-          <div class="dropdown-menu fade-down m-0">
-            <a href="attraction_area.html" class="dropdown-item">區域景點瀏覽</a>
-            <a href="attraction_address.html" class="dropdown-item">地理座標景點瀏覽</a>
-            <a href="attraction_tag.html" class="dropdown-item">關鍵字景點瀏覽</a>
-            <a href="attraction_random.html" class="dropdown-item">隨機推薦景點</a>
-            <!-- <a href="route_show.html" class="dropdown-item">所有路線</a> -->
-            <!-- <a href="attraction_board.html" class="dropdown-item">景點留言板</a> -->
-          </div>
-        </div>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-flag me-3"></i>newTRAVEL</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.php" class="nav-item nav-link active">首頁</a>
+                <a href="about.html" class="nav-item nav-link">關於我們</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">去哪裡玩</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="attraction_area.php" class="dropdown-item">區域景點</a>
+                        <a href="attraction_address.php" class="dropdown-item">地理座標景點</a>
+                        <a href="attraction_tag.php" class="dropdown-item">關鍵字景點</a>
+                        <a href="attraction_random.php" class="dropdown-item">隨機推薦景點</a>
+                        <a href="willattraction.php" class="dropdown-item">景點分享</a>
+                        <!-- <a href="route_show.html" class="dropdown-item">所有路線</a> -->
+                        <!-- <a href="attraction_board.html" class="dropdown-item">景點留言板</a> -->
+                    </div>
+                </div>
 
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">行程瀏覽</a>
-          <div class="dropdown-menu fade-down m-0">
-            <a href="route_area.html" class="dropdown-item">區域行程瀏覽</a>
-            <!-- <a href="route_tag.html" class="dropdown-item">地理座標景點瀏覽</a> -->
-            <a href="route_tag.html" class="dropdown-item">關鍵字行程瀏覽</a>
-            <a href="route_random.html" class="dropdown-item">隨機推薦行程</a>
-            <!-- <a href="route_custom.html" class="dropdown-item">自訂規劃路線</a> -->
-          </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">別人怎麼玩</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="route_area.php" class="dropdown-item">區域行程</a>
+                        <!-- <a href="route_tag.html" class="dropdown-item">地理座標景點瀏覽</a> -->
+                        <a href="route_tag.html" class="dropdown-item">關鍵字行程</a>
+                        <a href="route_random.html" class="dropdown-item">隨機推薦行程</a>
+                        <a href="php/logout_res.php" class="dropdown-item">session清除</a>
+                        <!-- <a href="route_custom.html" class="dropdown-item">自訂規劃路線</a> -->
+                    </div>
+                </div>
+                
+                <?php	
+                    if (isset($_SESSION['mem_name'])) {
+                        echo "<div class='nav-item dropdown'>";
+                        echo "<a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'>".$_SESSION['mem_name']."會員</a>";
+                        echo " <div class='dropdown-menu fade-down m-0'>
+                                    <a href='my_route.php' class='dropdown-item'>我的行程</a>
+                                    <a href='like_route.html' class='dropdown-item'>已收藏行程</a>
+                                    <a href='like_attractions.html' class='dropdown-item'>已收藏景點</a>
+                                    <a href='php/logout_res.php' class='dropdown-item'>登出</a>
+                                </div>";
+
+                    }else {
+                        echo "<a href='login.html' class='nav-item nav-link'>登入/註冊</a>";
+                        }
+                    ?>
+
+                    <!-- <a href='my_route_history.html' class='dropdown-item'>已去過行程</a> -->
+
+                    <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">會員管理</a> -->
+                    <!-- <div class="dropdown-menu fade-down m-0">
+                        <a href="my_route.html" class="dropdown-item">未去過行程</a>
+                        <a href="my_route_history.html" class="dropdown-item">已去過行程</a>
+                        <a href="like_attractions.html" class="dropdown-item">已收藏景點</a>
+                        <a href="like_route.html" class="dropdown-item">已收藏行程</a>
+                        <a href="404.html" class="dropdown-item">登出</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="route_custom.html"
+                    class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">試試隨機行程GO&#32;&#10140;</a>
+            </div>
+            <!-- 未登入前 -->
+            <!--<a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">加入我們<i class="fa fa-arrow-right ms-3"></i></a>-->
         </div>
-        <a href="willattraction.html" class="nav-item nav-link">景點分享</a>
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">會員管理</a>
-          <div class="dropdown-menu fade-down m-0">
-            <a href="my_route.html" class="dropdown-item">未去過行程</a>
-            <a href="my_route_history.html" class="dropdown-item">已去過行程</a>
-            <a href="like_attractions.html" class="dropdown-item">已收藏景點</a>
-            <a href="like_route.html" class="dropdown-item">已收藏行程</a>
-            <a href="404.html" class="dropdown-item">登出</a>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item dropdown">
-        <a href="route_custom.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">開始自訂行程GO&#32;&#10140;</a>
-      </div>
-      <!-- 未登入前 -->
-      <!--<a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">加入我們<i class="fa fa-arrow-right ms-3"></i></a>-->
-    </div>
-  </nav>
-  <!-- Navbar End -->
+    </nav>
+    <!-- Navbar End -->
   <div class="container">
   <form action="my_route.html" method="post">
     <div class="row justify-content-center">
@@ -120,16 +153,16 @@
       <div class="wrapper">
             <div class="card card-2">
                 <div class="card-body">
-                    <ul class="tab-list" style="margin:-16px -16px 10px -16px;box-shadow: 0px 3px 5px 0px #C4C4C4;" >
+                <ul class="tab-list" style="margin:-16px -16px 10px -16px;box-shadow: 0px 3px 5px 0px #C4C4C4;" >
                         <li class="tab-list__item active" style="padding-bottom:10px;">
-                            <a class="tab-list__link" href="#tab1" data-toggle="tab">新增行程-收藏景點</a>
+                            <a class="tab-list__link" href="#tab1" data-toggle="tab">新增景點</a>
                         </li>
-                        <li class="tab-list__item" style="font-size:22px">
+                        <!-- <li class="tab-list__item" style="font-size:22px">
                         |
                         </li>
                         <li class="tab-list__item">
                             <a class="tab-list__link" href="#tab2" data-toggle="tab">新增行程-鄰近景點</a>
-                        </li>
+                        </li> -->
                         <!-- <li class="tab-list__item">
                             <a class="tab-list__link" href="#tab3" data-toggle="tab">flight</a>
                         </li> -->
@@ -211,7 +244,7 @@
                           </div>
                     </div>
                     <div class="tab-pane" id="tab2">
-                    <div class="d-flex justify-content-start" style="font-size:18px; margin-bottom: 18px; margin-top: -25px;font-weight: bold;">
+                    <div class="d-flex justify-content-center" style="font-size:18px; margin-bottom: 18px; margin-top: -25px;font-weight: bold;">
                             <div class="col-md-4 pe-5">                        
                               <lable style="color:#1C806A;">根據下方地點搜尋鄰近相關景點...</lable>
                             </div>
@@ -773,7 +806,7 @@
                     var comment = tileData.comment;
                     var att_id = tileData.att_id; 
                   
-                    var searchBtn = $("<button>").addClass("btn btn-search").text("定點搜尋").hide();
+                    var searchBtn = $("<button>").addClass("btn btn-search").text("定點搜尋");
                     var currentTab; // 用來存儲當前激活的標籤的href值
 
                     searchBtn.on("click", function(event) {
@@ -784,16 +817,16 @@
                     tile.append(searchBtn);
 
 
-                    $('.tab-list__link').click(function(e) {
-                        e.preventDefault(); // 阻止默認行為
+                    // $('.tab-list__link').click(function(e) {
+                    //     e.preventDefault(); // 阻止默認行為
 
-                        currentTab = $(this).attr('href'); // 存儲當前標籤的href值
-                        if (currentTab === "#tab2") {
-                            searchBtn.show();
-                        } else {
-                            searchBtn.hide();
-                        }
-                    });
+                    //     currentTab = $(this).attr('href'); // 存儲當前標籤的href值
+                    //     if (currentTab === "#tab2") {
+                    //         searchBtn.show();
+                    //     } else {
+                    //         searchBtn.hide();
+                    //     }
+                    // });
 
 
 
@@ -801,7 +834,10 @@
                   var deleteBtn = $("<i>").addClass("fas fa-times delete-btn");
                   var editBtn = $("<button>").addClass("btn btn-edit").text("修改");
                   var timeInput = $("<input>").attr("type", "time").addClass("time").val(time).css("border", "none").prop("disabled", true);
-                  var placeEl = $("<a>").attr("href", "big_attraction.php#" + place).addClass("place").text(place);
+                  var placeEl = $("<a>").attr({
+                    "href": "big_attraction.php#" + place,
+                    "target": "_blank"
+                    }).addClass("place").text(place);
                   var commentInput = $("<input>").attr("type", "text").addClass("comment").val(comment).css("border", "none").css("margin-top", "10px").prop("disabled", true).css("margin-left", "30px");
 
                   var moveUpBtn = $("<i>").addClass("fas fa-arrow-up move-up-btn").css("padding-right","5px");

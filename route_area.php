@@ -97,7 +97,7 @@
                                 </div>";
 
                     }else {
-                        echo "<a href='login.html' class='nav-item nav-link'>登入/註冊</a>";
+                        echo "<a href='login.php' class='nav-item nav-link'>登入/註冊</a>";
                         }
                     ?>
 
@@ -671,7 +671,7 @@
                         //判斷是否登入並跳出警示框
                         if (!isLoggedIn) {
                             if (confirm('請先登入開啟此功能')) {
-                                window.location.href = 'login.html';
+                                window.location.href = 'login.php';
                             }
                             return;
                         }

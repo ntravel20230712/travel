@@ -26,8 +26,7 @@
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- 引入 Google Charts 函式庫 -->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- Template Stylesheet -->
 
   <!-- <link href="css/tablestyle.css" rel="stylesheet"> -->
   <link href="css/style.css" rel="stylesheet">
@@ -39,34 +38,12 @@
   ?>
   <style>
     body {
-      position: relative;  
-      background-image: url('img/taiwan_night.png');
-      background-repeat: no-repeat;  /* 使圖片不重複 */
-      background-size: cover;        /* 使圖片覆蓋整個畫面 */
-      background-position: center;   /* 使圖片居中 */
-      background-attachment: fixed;  /* 圖片固定不隨頁面滾動 */
-      margin: 0;                     /* 移除邊界 */
+      background-color: #3e94ec;
       font-family: "Roboto", helvetica, arial, sans-serif;
       font-size: 16px;
       font-weight: 400;
       text-rendering: optimizeLegibility;
     }
-    /* 使用偽元素調整背景亮度 */
-    body::before {
-        content: "";                   /* 偽元素內容為空 */
-        position: fixed;               /* 固定定位，使其覆蓋整個視窗 */
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;                 /* 覆蓋整個視窗的寬度 */
-        height: 100vh;                /* 覆蓋整個視窗的高度 */
-        background: rgba(0, 0, 0, 0.5); /* 使用半透明的黑色覆蓋，這裡的 0.5 可以調整為您想要的透明度 */
-        pointer-events: none;          /* 確保偽元素不會干擾其他元素的互動 */
-        z-index: -1;                   /* 確保偽元素位於背景圖片之下 */
-    }
-
-
 
     div.table-title {
       display: block;
@@ -206,231 +183,7 @@
     body {
       background-color: #c6def6;
     }
-    /* 隱藏面板初始樣式 */
-    #hiddenPanel {
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.3s ease;
-    display: none;
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    background-color: #f1f1f1;
-    padding: 20px;
-    border-radius: 8px;
-    }
-    /* 隱藏面板顯示樣式 */
-    #hiddenPanel.show {
-        opacity: 1;
-        transform: scale(1);
-        display: block;
-    } 
-    /* 內容區塊樣式 */
-    .content-div {
-    display: none;
-    }
   </style>
-  <script>
-        // 載入繪圖函式庫
-        google.charts.load('current', {'packages':['corechart']});
-        // google.charts.load("current", {'packages':["calendar"]});
-        // 當函式庫載入完成後，呼叫函數
-        google.charts.setOnLoadCallback(function() {
-          drawChart1();
-          drawChart2();
-          drawChart3(); 
-          drawLineChart1();
-          drawLineChart2();
-          drawChart4();
-        });
-        // google.charts.setOnLoadCallback(drawChart);
-
-          // 繪製第一個圓餅圖
-          function drawChart1() {
-          var rawData1 = [
-            ['台北', 1],
-            ['台中', 8],
-            ['高雄', 9]
-          ];
-          rawData1.sort(function(a, b) {
-            return b[1] - a[1];
-          });
-          var data1 = google.visualization.arrayToDataTable([['城市', '人口數量']].concat(rawData1));
-
-          var options1 = {
-            title: '收藏這個行程的人也住在這裡',
-            backgroundColor: 'transparent',
-            titleTextStyle: {
-              color: '#000'  // 設定標題文字為白色
-            },
-            legendTextStyle: {
-              color: '#000'  // 設定圖例文字為白色
-            }
-          };
-
-
-          var chart1 = new google.visualization.PieChart(document.getElementById('bar_chart_div1'));
-          chart1.draw(data1, options1);
-        }
-
-        // 繪製並排序第二個圓餅圖
-        function drawChart2() {
-          var rawData2 = [
-            ['爬山', 4],
-            ['健行', 6],
-            ['散步', 7]
-          ];
-          rawData2.sort(function(a, b) {
-            return b[1] - a[1];
-          });
-          var data2 = google.visualization.arrayToDataTable([['分類', '人']].concat(rawData2));
-
-          var options2 = {
-            title: '收藏這個行程的人也有這些興趣',
-            backgroundColor: 'transparent',
-            titleTextStyle: {
-              color: '#000'  // 設定標題文字為白色
-            },
-            legendTextStyle: {
-              color: '#000'  // 設定圖例文字為白色
-            }
-          };
-
-          var chart2 = new google.visualization.PieChart(document.getElementById('pie_chart_div2'));
-          chart2.draw(data2, options2);
-        }
-          // 繪製第三個圓餅圖，使用年齡區間來分類
-          function drawChart3() {
-            var rawData3 = [
-              ['0-18', 53],
-              ['19-35', 62],
-              ['36-50', 32],
-              ['51+', 16]
-            ];
-            var data3 = google.visualization.arrayToDataTable([['年齡區間', '人數']].concat(rawData3));
-
-            var options3 = {
-              title: '收藏這個行程的人年齡區間分布',
-              backgroundColor: 'transparent',
-              titleTextStyle: {
-                color: '#000'  // 設定標題文字為白色
-              },
-              legendTextStyle: {
-                color: '#000'  // 設定圖例文字為白色
-              }
-            };
-
-            var chart3 = new google.visualization.PieChart(document.getElementById('pie_chart_div3'));
-            chart3.draw(data3, options3);
-          }
-
-          // 畫第一個折線圖
-          function drawLineChart1() {
-            var data4 = new google.visualization.DataTable();
-            data4.addColumn('string', '分數(越多越刺激)');
-            data4.addColumn('number', '人數');
-            data4.addRows([
-              ['1',  62],
-              ['2',  47],
-              ['3',  34],
-              ['4',  45],
-              ['5',  17]
-            ]);
-
-            var options4 = {
-              title: '喜歡的行程刺激程度',
-              backgroundColor: 'transparent',
-              titleTextStyle: {
-                color: '#000'  // 設定標題文字為黑色
-              },
-              legendTextStyle: {
-                color: '#000'  // 設定圖例文字為黑色
-              },
-              hAxis: { 
-                title: '休閒-------------------------------------------------------刺激',
-                textStyle: { color: '#000' },
-                titleTextStyle: { color: '#000' }
-              },
-            };
-
-            var chart4 = new google.visualization.LineChart(document.getElementById('line_chart_div1'));
-            chart4.draw(data4, options4);
-          }
-
-
-          // 畫第二個折線圖
-          function drawLineChart2() {
-            var data5 = new google.visualization.DataTable();
-            data5.addColumn('string', '分數(越多越刺激)');
-            data5.addColumn('number', '人數');
-            data5.addRows([
-              ['1',  18],
-              ['2',  24],
-              ['3',  32],
-              ['4',  76],
-              ['5',  65]
-            ]);
-
-            var options5 = {
-              title: '喜歡的食物程度',
-              backgroundColor: 'transparent',
-              titleTextStyle: {
-                color: '#000'  // 設定標題文字為黑色
-              },
-              legendTextStyle: {
-                color: '#000'  // 設定圖例文字為黑色
-              },
-              hAxis: { 
-                title: '甜食-------------------------------------------------------鹹食',
-                textStyle: { color: '#000' },
-                titleTextStyle: { color: '#000' }
-              },
-            };
-
-            var chart5 = new google.visualization.LineChart(document.getElementById('line_chart_div2'));
-            chart5.draw(data5, options5);
-          }
-
-
-
-
-// 繪製第一個長條圖
-function drawChart4() {
-  // 創建和填充數據表
-  var data = google.visualization.arrayToDataTable([
-    ['頻率', '人數', { role: 'annotation' }],
-    ['一個月多次', 63, '一個月多次'],
-    ['一個月一次', 55, '一個月一次'],
-    ['半年一次', 43, '半年一次'],
-    ['一年一次', 17, '一年一次']
-  ]);
-
-  // 設置圖表選項
-  var options = {
-    title: '出遊頻率',
-    backgroundColor: 'transparent',
-    titleTextStyle: {
-      color: '#000'  // 設定標題文字為白色
-    },
-    legendTextStyle: {
-      color: '#000'  // 設定圖例文字為白色
-    },
-    annotations: {
-      alwaysOutside: true,
-      textStyle: {
-        fontSize: 12,
-        auraColor: 'none',
-        color: '#555'
-      }
-    }
-  };
-
-  // 繪製長條圖
-  var chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
-  chart.draw(data, options);
-}
-
-    </script>
 </head>
 
 <body>
@@ -515,12 +268,12 @@ function drawChart4() {
     <!-- Navbar End -->
   <div class="container ">
     <div class="d-flex justify-content-center mt-5">
-      <h1 style="color: white;"><?php
+      <h1><?php
                     $RouteName = $_GET['RouteName'];
                     echo "$RouteName";?></h1>
     </div>
     <div class="d-flex justify-content-center mb-3">
-      <h4 style="color: white;">更新日期:<?php
+      <h4>更新日期:<?php
                     $route_update = $_GET['route_update'];
                     echo "$route_update";?></h4>
       <!-- <h4>創建者:
@@ -530,42 +283,25 @@ function drawChart4() {
                     ?></h4> -->
     </div>
     <div class="d-flex flex-row-reverse bd-highlight my-4">
-
+      <!-- <button type="submit" class="btn btn-primary btn-lg w-20 mx-3" id="custom-route-btn">按照此行程自訂</button> -->
       <a href="route_custom.php?RouteID=<?php $routeID=$_GET['RouteID'];
         echo $routeID;?>" class="btn btn-primary btn-lg w-20 mx-3">按照此行程自訂</a>
       <?php
-        echo'<div><input type="checkbox" class="btn-check" id="btn-check-1-outlined" autocomplete="off">
-             <label class="me-2 btn btn-outline-light btn-lg" id="routefavoriteBtn' . $routeID . '" data-routeid="' . $routeID . '" onclick="toggleFavorite(' . $routeID . ')">加入收藏</lable></div>';
+        echo'<input type="checkbox" class="btn-check" id="btn-check-1-outlined" autocomplete="off">
+             <label class="me-2 btn btn-outline-secondary btn-lg" id="routefavoriteBtn' . $routeID . '" data-routeid="' . $routeID . '" onclick="toggleFavorite(' . $routeID . ')">加入收藏';
       ?>
-      <button id="floatingButton" class="btn btn-primary btn-lg" style="margin-right:650px;">行程收藏數據概覽</button>
-
+      <!-- <button type="button" class="btn btn-primary btn-lg w-20 mx-3" id="favorite-btn">加入收藏</button> -->
     </div>
-    <div class="d-flex justify-content-center" style="margin-left:325px;">
-    <!-- style="margin-left:200px;margin-top:-90px; -->
-      <div id="col-1">
-        <!-- 隱藏面板 -->
-          <div id="hiddenPanel">
-              <button onclick="switchContent('bar_chart_div1')">居住</button>
-              <button onclick="switchContent('pie_chart_div2')">興趣</button>
-              <button onclick="switchContent('pie_chart_div3')">年齡</button>
-              <button onclick="switchContent('line_chart_div1')">刺激度</button>
-              <button onclick="switchContent('line_chart_div2')">喜好甜鹹食</button>
-              <button onclick="switchContent('bar_chart_div')">出遊頻率</button>
-              <div id="bar_chart_div1" class="content-div" style="width: 350px; height: 200px;"></div>
-              <div id="pie_chart_div2" class="content-div" style="width: 350px; height: 200px;"></div>
-              <div id="pie_chart_div3" class="content-div" style="width: 350px; height: 200px;"></div>
-              <div id="line_chart_div1" class="content-div" style="width: 350px; height: 200px;"></div>
-              <div id="line_chart_div2" class="content-div" style="width: 350px; height: 200px;"></div>
-              <div id="bar_chart_div" class="content-div" style="width: 350px; height: 200px;"></div>
-          </div>
+    <div class="d-flex justify-content-center">
+      <div id="col-1" style="margin-left:200px;margin-top:-90px;">
         <!-- 第一個長條圖將在這個 div 元素中顯示 -->
-        <!-- <div id="bar_chart_div1" style="width: 400px; height: 200px; background-color: rgba(0, 0, 0, 0.5);"></div> -->
+        <div id="bar_chart_div1" style="width: 400px; height: 200px; background-color: rgba(0, 0, 0, 0.5);"></div>
 
         <!-- 第二個圓餅圖將在這個 div 元素中顯示 -->
-        <!-- <div id="pie_chart_div2" style="width: 400px; height: 200px; background-color: rgba(0, 0, 0, 0.5);"></div> -->
+        <div id="pie_chart_div2" style="width: 400px; height: 200px; background-color: rgba(0, 0, 0, 0.5);"></div>
 
         <!-- 第三個圓餅圖將在這個 div 元素中顯示 -->
-        <!-- <div id="pie_chart_div3" style="width: 400px; height: 200px; background-color: rgba(0, 0, 0, 0.5);"></div> -->
+        <div id="pie_chart_div3" style="width: 400px; height: 200px; background-color: rgba(0, 0, 0, 0.5);"></div>
       </div>
 
       <div class="col-11" style="padding-right:500px;">
@@ -579,6 +315,31 @@ function drawChart4() {
               </tr>
             </thead>
             <tbody class="table-hover">
+              <!-- <tr>
+                <td class="text-left">January</td>
+                <td class="text-left">$ 50,000.00</td>
+                <td class="text-left">無</td>
+              </tr>
+              <tr>
+                <td class="text-left">February</td>
+                <td class="text-left">$ 10,000.00</td>
+                <td class="text-left">無</td>
+              </tr>
+              <tr>
+                <td class="text-left">March</td>
+                <td class="text-left">$ 85,000.00</td>
+                <td class="text-left">無</td>
+              </tr>
+              <tr>
+                <td class="text-left">April</td>
+                <td class="text-left">$ 56,000.00</td>
+                <td class="text-left">無</td>
+              </tr>
+              <tr>
+                <td class="text-left">May</td>
+                <td class="text-left">$ 98,000.00</td>
+                <td class="text-left">無</td>
+              </tr> -->
               <?php
               $RouteID = $_GET['RouteID'];
               require_once('php/functionsrouteatt.php');
@@ -674,48 +435,16 @@ function drawChart4() {
                 </div>
             </div>
             <!-- Footer End -->
-
   </div>
 
 
 
-
+  <!-- 引入 Google Charts 函式庫 -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script>
-                    const floatingButton = document.getElementById('floatingButton');
-                    const hiddenPanel = document.getElementById('hiddenPanel');
-                    const contentDivs = document.querySelectorAll('.content-div');
-
-                    // 切換隱藏面板的顯示狀態
-                    floatingButton.addEventListener('click', function() {
-                        if (hiddenPanel.classList.contains('show')) {
-                            hiddenPanel.classList.remove('show');
-                            setTimeout(() => { hiddenPanel.style.display = 'none'; }, 300);
-                        } else {
-                            hiddenPanel.style.display = 'block';
-                            setTimeout(() => { hiddenPanel.classList.add('show'); }, 0);
-                        }
-                    });
-
-                    // 切換內容區塊的顯示
-                    function switchContent(id) {
-                        contentDivs.forEach(div => {
-                            if (div.id !== id) {
-                                div.style.display = 'none';
-                            } else {
-                                div.style.display = 'block';
-                            }
-                        });
-                    }
-
-                    // 當網頁載入完成時，顯示bar_chart_div1的內容
-                    document.addEventListener('DOMContentLoaded', function() {
-                        switchContent('bar_chart_div1');
-                    });
-
-
                     var isLoggedIn = <?php echo isset($_SESSION['mem_id']) ? 'true' : 'false'; ?>;
                     let isFavorite = {}; // 使用物件儲存每筆路線的收藏狀態
 
@@ -796,14 +525,93 @@ function drawChart4() {
                         // 发送请求
                         xhr.send(requestBody);
                     }
+                        // 載入繪圖函式庫
+                        google.charts.load('current', {'packages':['corechart']});
 
+                    // 當函式庫載入完成後，呼叫 drawChart1 和 drawChart2 函數
+                    google.charts.setOnLoadCallback(function() {
+                      drawChart1();
+                      drawChart2();
+                      drawChart3(); 
+                    });
 
+                    // 繪製第一個圓餅圖
+                    function drawChart1() {
+                      var rawData1 = [
+                        ['台北', 1],
+                        ['台中', 8],
+                        ['高雄', 9]
+                      ];
+                      rawData1.sort(function(a, b) {
+                        return b[1] - a[1];
+                      });
+                      var data1 = google.visualization.arrayToDataTable([['城市', '人口數量']].concat(rawData1));
 
+                      var options1 = {
+                        title: '收藏這條路線的人也住在這裡',
+                        backgroundColor: 'transparent',
+                        titleTextStyle: {
+                          color: '#FFF'  // 設定標題文字為白色
+                        },
+                        legendTextStyle: {
+                          color: '#FFF'  // 設定圖例文字為白色
+                        }
+                      };
 
+                      var chart1 = new google.visualization.PieChart(document.getElementById('bar_chart_div1'));
+                      chart1.draw(data1, options1);
+                    }
 
+                    // 繪製並排序第二個圓餅圖
+                    function drawChart2() {
+                      var rawData2 = [
+                        ['親子活動', 4],
+                        ['特色店家', 6],
+                        ['知名品牌', 7]
+                      ];
+                      rawData2.sort(function(a, b) {
+                        return b[1] - a[1];
+                      });
+                      var data2 = google.visualization.arrayToDataTable([['分類', '人']].concat(rawData2));
 
+                      var options2 = {
+                        title: '收藏這條路線的人也喜歡這個分類',
+                        backgroundColor: 'transparent',
+                        titleTextStyle: {
+                          color: '#FFF'  // 設定標題文字為白色
+                        },
+                        legendTextStyle: {
+                          color: '#FFF'  // 設定圖例文字為白色
+                        }
+                      };
 
+                      var chart2 = new google.visualization.PieChart(document.getElementById('pie_chart_div2'));
+                      chart2.draw(data2, options2);
+                    }
+                      // 繪製第三個圓餅圖，使用年齡區間來分類
+                      function drawChart3() {
+                        var rawData3 = [
+                          ['0-18', 100],
+                          ['19-35', 200],
+                          ['36-50', 150],
+                          ['51+', 75]
+                        ];
+                        var data3 = google.visualization.arrayToDataTable([['年齡區間', '人數']].concat(rawData3));
 
+                        var options3 = {
+                          title: '收藏這條路線的人的年齡區間分布',
+                          backgroundColor: 'transparent',
+                          titleTextStyle: {
+                            color: '#FFF'  // 設定標題文字為白色
+                          },
+                          legendTextStyle: {
+                            color: '#FFF'  // 設定圖例文字為白色
+                          }
+                        };
+
+                        var chart3 = new google.visualization.PieChart(document.getElementById('pie_chart_div3'));
+                        chart3.draw(data3, options3);
+                      }
 </script>
 </body>
 
