@@ -41,7 +41,10 @@
 				$rs = mysqli_fetch_assoc($results);
 				$_SESSION['mem_name']=$rs['mem_name'];
 				echo "<script>alert('登入成功!')</script>";
-				header("refresh:0; url=../index.php");
+				// 使用 header 函數進行頁面跳轉
+				echo '<script type="text/javascript">
+				window.history.go(-2);
+			  </script>';
 			}
 		else	
 			{

@@ -1,5 +1,8 @@
 <?php
+    session_start();
+    $mem_id= $_SESSION['mem_id'];
     header('Content-Type: application/json');
+    // $mem_id = 4;
     // $att_id = 30;
     // $radius = 100;
     $att_id = $_POST['att_id'];
@@ -20,7 +23,11 @@
         $lat_min=$row["att_lat"]-$km;
         $lng_max=$row["att_lng"]+$km;
         $lng_min=$row["att_lng"]-$km;
-        $sql="SELECT * FROM `attractions` WHERE `att_lat` BETWEEN '$lat_min' AND '$lat_max' AND `att_lng` BETWEEN '$lng_min' AND '$lng_max'";
+        $sql = "SELECT attractions.* FROM `attractions`
+        JOIN `favorites` ON attractions.att_id = favorites.att_id
+        WHERE favorites.mem_id = '$mem_id'
+        AND `att_lat` BETWEEN '$lat_min' AND '$lat_max'
+        AND `att_lng` BETWEEN '$lng_min' AND '$lng_max'";        
         $result = mysqli_query($con,$sql) or die (mysqli_error($con));
         $data = array();
             if ($result->num_rows > 0) {
