@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>旅遊規劃</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    form,
+    h1 {
+      text-align: center;
+      /* 水平置中 */
+      margin-top: 50px;
+      /* 垂直置中 */
+    }
+
+    .tile {
+      position: relative;
+      padding: 20px;
+      margin-bottom: 25px;
+      width: 800px;
+      background-color: #fff;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+      margin: 0 auto;
+      /* 左右置中 */
+      display: flex;
+      /* 使用 flex 來垂直置中 */
+      align-items: center;
+    }
+
+    .tile .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 1.2rem;
+      color: #dc3545;
+      cursor: pointer;
+    }
+
+    .tile .date {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .tile .time {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .tile .place {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .col-md-2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .form-label {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin: 0 auto;
+      /* 左右置中 */
+      display: flex;
+      /* 使用 flex 來垂直置中 */
+      align-items: center;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+
+
+
+    body {
+      background-color: #c6def6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+      <h2 class="m-0 text-primary"><i class="fa fa-flag me-3"></i>newTRAVEL</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto p-4 p-lg-0">
+        <a href="index.html" class="nav-item nav-link active">首頁</a>
+        <a href="about.html" class="nav-item nav-link">關於我們</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">景點瀏覽</a>
+          <div class="dropdown-menu fade-down m-0">
+            <a href="attraction_area.html" class="dropdown-item">區域景點瀏覽</a>
+            <a href="attraction_address.html" class="dropdown-item">地理座標景點瀏覽</a>
+            <a href="attraction_tag.html" class="dropdown-item">關鍵字景點瀏覽</a>
+            <a href="attraction_random.html" class="dropdown-item">隨機推薦景點</a>
+            <!-- <a href="route_show.html" class="dropdown-item">所有路線</a> -->
+            <!-- <a href="attraction_board.html" class="dropdown-item">景點留言板</a> -->
+          </div>
+        </div>
+
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">行程瀏覽</a>
+          <div class="dropdown-menu fade-down m-0">
+            <a href="route_area.html" class="dropdown-item">區域行程瀏覽</a>
+            <!-- <a href="route_tag.html" class="dropdown-item">地理座標景點瀏覽</a> -->
+            <a href="route_tag.html" class="dropdown-item">關鍵字行程瀏覽</a>
+            <a href="route_random.html" class="dropdown-item">隨機推薦行程</a>
+            <!-- <a href="route_custom.html" class="dropdown-item">自訂規劃路線</a> -->
+          </div>
+        </div>
+        <a href="willattraction.html" class="nav-item nav-link">景點分享</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">會員管理</a>
+          <div class="dropdown-menu fade-down m-0">
+            <a href="my_route.html" class="dropdown-item">未去過行程</a>
+            <a href="my_route_history.html" class="dropdown-item">已去過行程</a>
+            <a href="like_attractions.html" class="dropdown-item">已收藏景點</a>
+            <a href="like_route.html" class="dropdown-item">已收藏行程</a>
+            <a href="404.html" class="dropdown-item">登出</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="route_custom.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">開始自訂行程GO&#32;&#10140;</a>
+      </div>
+      <!-- 未登入前 -->
+      <!--<a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">加入我們<i class="fa fa-arrow-right ms-3"></i></a>-->
+    </div>
+  </nav>
+  <!-- Navbar End -->
+  <div class="container">
+    <h1 class="text-center my-5">旅遊規劃</h1>
+    <form action="my_route.html" method="post">
+      <div class="row mb-3 justify-content-center">
+        <div class="col-md-2">
+          <label for="date-input" class="form-label">出遊日期</label>
+          <input type="date" class="form-control" id="date-input">
+        </div>
+        <div class="col-md-2">
+          <label for="time-input" class="form-label">時間</label>
+          <input type="time" class="form-control" id="time-input">
+        </div>
+        <div class="col-md-2">
+          <label for="place-input" class="form-label">景點</label>
+          <input type="text" class="form-control" id="place-input">
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-primary w-100" id="add-btn">新增</button>
+        </div>
+      </div>
+      <div class="row justify-content-center" id="tiles-container"></div>
+      <div class="row justify-content-center">
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary w-100 mt-3" id="end-btn">完成</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var timeInput = document.getElementById("time-input");
+    timeInput.addEventListener("input", function () {
+      var selectedTime = new Date(this.value);
+      var selectedMinutes = selectedTime.getMinutes();
+      if (selectedMinutes % 15 !== 0) {
+        var roundedMinutes = Math.floor(selectedMinutes / 15) * 15;
+        selectedTime.setMinutes(roundedMinutes);
+        this.value = selectedTime.toISOString().substr(11, 5);
+      }
+    });
+    $(document).ready(function () {
+      var tilesContainer = $("#tiles-container");
+
+      function addTile(time, place) {
+        var tile = $("<div>").addClass("col-md-6 tile");
+        var deleteBtn = $("<i>").addClass("fas fa-times delete-btn");
+        var timeEl = $("<div>").addClass("time").text(time);
+        var placeEl = $("<div>").addClass("place").text(place);
+
+        tile.append(deleteBtn);
+        tile.append(timeEl);
+        tile.append(placeEl);
+        tilesContainer.append(tile);
+
+        deleteBtn.click(function () {
+          tile.remove();
+          sortTiles();
+        });
+      }
+
+      $("#add-btn").click(function () {
+        var time = $("#time-input").val();
+        var place = $("#place-input").val();
+
+        if (time && place) {
+          addTile(time, place);
+          $("#time-input").val("");
+          $("#place-input").val("");
+          sortTiles();
+        }
+      });
+
+      // 定義排序函數
+      function sortTiles() {
+        var tiles = tilesContainer.children(".tile").get();
+        tiles.sort(function (a, b) {
+          var timeA = $(a).find(".time").text();
+          var timeB = $(b).find(".time").text();
+          return timeA.localeCompare(timeB);
+        });
+        $.each(tiles, function (index, tile) {
+          tilesContainer.append(tile);
+        });
+      }
+
+      // 在每次新增、刪除、更改之後重新排序
+      tilesContainer.on("click", ".delete-btn", sortTiles);
+      tilesContainer.on("input", ".time, .place", sortTiles);
+
+      // 載入現有的行程
+      var existingTiles = [
+        { time: "09:00", place: "奇美博物館" },
+        { time: "11:30", place: "午餐 - 原燒 - 台南永華店" },
+        { time: "13:00", place: "赤崁樓" },
+        { time: "15:00", place: "十鼓仁糖文創園區" },
+        { time: "17:00", place: "四草綠色隧道" },
+        { time: "19:00", place: "晚餐 - 漢來海港餐廳" },
+      ];
+
+      $.each(existingTiles, function (index, tileData) {
+        addTile(tileData.time, tileData.place);
+      });
+
+      // 綁定排序按鈕點擊事件
+      $("#sort-btn").click(function () {
+        sortTiles();
+      });
+
+      // 定義排序函式
+      function sortTiles() {
+        var tiles = tilesContainer.children(".tile").get();
+        tiles.sort(function (a, b) {
+          var timeA = $(a).find(".time").text();
+          var timeB = $(b).find(".time").text();
+          return timeA.localeCompare(timeB);
+        });
+        $.each(tiles, function (index, tile) {
+          tilesContainer.append(tile);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

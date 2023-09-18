@@ -1,0 +1,394 @@
+<!--schedule_choose.php-->
+<!-- <?php
+require_once('conn.php');
+
+$sql="SELECT * FROM `memdata`";
+$str=$con->query($sql);
+if($str && mysqli_num_rows($str)){
+    while($row= mysqli_fetch_assoc($str)){
+        $data[]=$row;
+    }
+}
+?> -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>Dashboard Template · Bootstrap v5.0</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="assets/bootstrap_5.2.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .custom-select-wrapper select {
+      width: 200px;
+      /* 調整適當的寬度大小 */
+      height: 30px;
+      /* 調整適當的高度大小 */
+      padding: 5px;
+      /* 調整適當的內邊距大小 */
+
+    }
+
+    #sidebarMenu {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar-background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="assets/bootstrap_5.2.3/css/dashboard.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a href="#" class="navbar-brand d-flex align-items-center px-5 px-lg-5">
+      <h2 class="m-0 text-primary"><i class="fa fa-flag me-3"></i>myTRAVEL</h2>
+    </a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3" href="#">搜尋</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="404.html">
+                <span data-feather="home"></span>
+                會員資料
+              </a>
+            <li class="nav-item">
+              <a class="nav-link active" href="my_route.html">
+                <span data-feather="file"></span>
+                我的路線
+              </a>
+            </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="like_attractions.html">
+                <span data-feather="file"></span>
+                已收藏景點
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="like_route.html">
+                <span data-feather="file"></span>
+                已收藏路線
+              </a>
+            </li>
+            <li class="nav-item">
+              <!--<a class="nav-link" href="logout.php">-->
+              <a class="nav-link" href="404.html">
+                <span data-feather="layers"></span>
+                登出
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <span data-feather="layers"></span>
+                回首頁
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <br>
+        <h3 class="mb-3">已搜尋到的路線</3>
+
+          <div class="col-md-12 custom-select-wrapper">
+            <select id="categorySelect1" class="form-select" style="border: 1px solid black; float: right;">
+              <option selected>最新</option>
+              <option value="1">按照筆畫</option>
+              <option value="2">評分最高</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+              <h6 class="mb-4"></h6>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col" id="route_name">路線</th>
+                      <th scope="col" id="route_city">城市</th>
+                      <th scope="col" id="route_week">星期</th>
+                      <th scope="col" id="route_startime">時間</th>
+                      <th scope="col" id="route_tag">旅遊類型</th>
+                      <th scope="col" id="route_recommend">推薦值</th>
+                      <th scope="col" id="route_update">更新日期</th>
+                      <th scope="col" id="route_name"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="#" class="delete-link" data-id="1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜一</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/7</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/31</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">路線1</th>
+                      <td>台中市</td>
+                      <td>禮拜日</td>
+                      <td>7:00</td>
+                      <td>活力行程、美食行程</td>
+                      <td>12</td>
+                      <td>12/5</td>
+                      <td><a href="目标页面1">選擇</a></td>
+                      <td><a href="目标页面1">刪除</a></td>
+                    </tr>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-2">
+                  <button id="prevButton" class="btn btn-primary">上一頁</button>
+                </div>
+                <div class="col-2">
+                  <button id="nextButton" class="btn btn-primary">下一頁</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+  </main>
+
+  <script>
+    function adjustSidebarBackgroundImage() {
+      var sidebar = document.getElementById('sidebarMenu');
+      var backgroundImage = document.querySelector('.sidebar-background-image');
+
+      var windowHeight = window.innerHeight;
+      var sidebarHeight = sidebar.scrollHeight;
+
+      if (sidebarHeight < windowHeight) {
+        sidebar.style.height = windowHeight + 'px';
+      } else {
+        sidebar.style.height = 'auto';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', adjustSidebarBackgroundImage);
+    window.addEventListener('resize', adjustSidebarBackgroundImage);
+  </script>
+
+  <script>
+    // 获取表格和页码按钮的引用
+    const table = document.querySelector('.table');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+
+    // 定义每页显示的行数和当前页码
+    const rowsPerPage = 8;
+    let currentPage = 1;
+
+    // 计算总页数
+    const totalRows = table.tBodies[0].rows.length;
+    const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+    // 更新表格显示
+    const updateTableDisplay = () => {
+      // 隐藏所有行
+      for (let row of table.tBodies[0].rows) {
+        row.style.display = 'none';
+      }
+
+      // 计算当前页的起始索引和结束索引
+      const startIndex = (currentPage - 1) * rowsPerPage;
+      const endIndex = startIndex + rowsPerPage;
+
+      // 显示当前页的行
+      for (let i = startIndex; i < endIndex; i++) {
+        if (table.tBodies[0].rows[i]) {
+          table.tBodies[0].rows[i].style.display = '';
+        }
+      }
+
+      // 更新上一页和下一页按钮的状态
+      prevButton.disabled = currentPage === 1;
+      nextButton.disabled = currentPage === totalPages;
+    };
+
+    // 初始化表格显示
+    updateTableDisplay();
+
+    // 上一页按钮的点击事件处理程序
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        updateTableDisplay();
+      }
+    });
+
+    // 下一页按钮的点击事件处理程序
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        updateTableDisplay();
+      }
+    });
+  </script>
+
+
+
+
+  <script src="assets/bootstrap_5.2.3/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+    integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+    crossorigin="anonymous"></script>
+  <script src="dashboard.js"></script>
+</body>
+
+</html>
