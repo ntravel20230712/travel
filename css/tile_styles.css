@@ -1,0 +1,91 @@
+
+    form,
+    h1 {
+      text-align: center;
+      /* 水平置中 */
+      margin-top: 50px;
+      /* 垂直置中 */
+    }
+
+    .tile {
+      position: relative;
+      padding: 20px;
+      margin-bottom: 25px;
+      width: 800px;
+      background-color: #fff;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+      margin: 0 auto;
+      /* 左右置中 */
+      display: flex;
+      /* 使用 flex 來垂直置中 */
+      align-items: center;
+    }
+
+    .tile .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 1.2rem;
+      color: #dc3545;
+      cursor: pointer;
+    }
+    
+
+    .tile .date {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .tile .time {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .tile .place {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .col-md-2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .form-label {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin: 0 auto;
+      /* 左右置中 */
+      display: flex;
+      /* 使用 flex 來垂直置中 */
+      align-items: center;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    #clickme{
+      font-size: 24px;
+    }
+
+    #placeLink{
+      font-size: 24px;
+    }
+
+
+
+
+    body {
+      background-color: #c6def6;
+    }
