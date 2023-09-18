@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>Dashboard Template · Bootstrap v5.0</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+      <h2 class="m-0 text-primary"><i class="fa fa-flag me-3"></i>newTRAVEL</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto p-4 p-lg-0">
+        <a href="index.html" class="nav-item nav-link active">首頁</a>
+        <a href="about.html" class="nav-item nav-link">關於我們</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">景點瀏覽</a>
+          <div class="dropdown-menu fade-down m-0">
+            <a href="attraction_area.html" class="dropdown-item">區域景點瀏覽</a>
+            <a href="attraction_address.html" class="dropdown-item">地理座標景點瀏覽</a>
+            <a href="attraction_tag.html" class="dropdown-item">關鍵字景點瀏覽</a>
+            <a href="attraction_random.html" class="dropdown-item">隨機推薦景點</a>
+            <!-- <a href="route_show.html" class="dropdown-item">所有路線</a> -->
+            <!-- <a href="attraction_board.html" class="dropdown-item">景點留言板</a> -->
+          </div>
+        </div>
+
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">行程瀏覽</a>
+          <div class="dropdown-menu fade-down m-0">
+            <a href="route_area.html" class="dropdown-item">區域行程瀏覽</a>
+            <!-- <a href="route_tag.html" class="dropdown-item">地理座標景點瀏覽</a> -->
+            <a href="route_tag.html" class="dropdown-item">關鍵字行程瀏覽</a>
+            <a href="route_random.html" class="dropdown-item">隨機推薦行程</a>
+            <!-- <a href="route_custom.html" class="dropdown-item">自訂規劃路線</a> -->
+          </div>
+        </div>
+        <a href="willattraction.html" class="nav-item nav-link">景點分享</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">會員管理</a>
+          <div class="dropdown-menu fade-down m-0">
+            <a href="my_route.html" class="dropdown-item">未去過行程</a>
+            <a href="my_route_history.html" class="dropdown-item">已去過行程</a>
+            <a href="like_attractions.html" class="dropdown-item">已收藏景點</a>
+            <a href="like_route.html" class="dropdown-item">已收藏行程</a>
+            <a href="404.html" class="dropdown-item">登出</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item dropdown">
+        <a href="route_custom.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">開始自訂行程GO&#32;&#10140;</a>
+      </div>
+      <!-- 未登入前 -->
+      <!--<a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">加入我們<i class="fa fa-arrow-right ms-3"></i></a>-->
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <main class="col-md-12 ms-sm-auto px-md-4">
+    <br>
+
+    <!-- <div class="col-md-2 custom-select-wrapper">
+          <select id="categorySelect1" class="form-select" style="border: 1px solid black; float: right;">
+            <option selected>最新</option>
+            <option value="1">按照筆畫</option>
+            <option value="2">評分最高</option>
+          </select>
+        </div> -->
+    <div class="row g-4">
+      <div class="wow fadeInUp" data-wow-delay="0.3s">
+        <section class="intro">
+          <div class="bg-image h-100" style="background-color: #f5f7fa;">
+            <div class="mask d-flex align-items-center h-100">
+              <div class="container">
+                <h3 class="mt-5">我的行程</h3>
+                <!-- 排列bar開始-->
+                <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3 py-3 fadeInUp"
+                  data-wow-delay="0.1s">
+                  <strong class="d-block py-2">已查到32個景點 </strong>
+                  <div class="ms-auto">
+                    <select class="form-select d-inline-block w-auto border pt-1 fadeInUp" data-wow-delay="0.1s">
+                      <option value="0">最多收藏</option>
+                      <option value="1">最少收藏</option>
+                      <option value="2">最新上傳</option>
+                      <option value="3">最舊上傳</option>
+                    </select>
+                  </div>
+                </header>
+                <!-- 排列bar結束 -->
+                <div class="row justify-content-center">
+                  <div class="card">
+                    <div class="card-body p-1">
+
+                      <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
+                        style="position: relative; height: 500px">
+
+                        <table class="table table-striped mb-0">
+                          <thead style="background-color: #424242;">
+                            <tr>
+                              <th scope="col">路線名</th>
+                              <th scope="col">縣市</th>
+                              <th scope="col">遊玩日期</th>
+                              <th scope="col">時間</th>
+                              <th scope="col">標籤</th>
+                              <th scope="col">推薦數</th>
+                              <th scope="col">上傳日期</th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>悠遊台南行</td>
+                              <td>台南市</td>
+                              <td>2023/5/17</td>
+                              <td>10:00</td>
+                              <td>親子同樂</td>
+                              <td>12</td>
+                              <td>2023/4/8</td>
+                              <td><a href="route_detail.html">開始行程</a></td>
+                              <td><a href="#">移除</a></td>
+                            </tr>
+                            <tr>
+                              <td>文藝復興台南路線</td>
+                              <td>台南市</td>
+                              <td>2023/5/26</td>
+                              <td>9:00</td>
+                              <td>悠閒行程</td>
+                              <td>2</td>
+                              <td>2023/5/16</td>
+                              <td><a href="#">開始行程</a></td>
+                              <td><a href="#">移除</a></td>
+                            </tr>
+                            <tr>
+                              <td>復古綠油油台南路線</td>
+                              <td>台南市</td>
+                              <td>2023/4/26</td>
+                              <td>15:00</td>
+                              <td>親子同樂、活力行程</td>
+                              <td>24</td>
+                              <td>2023/3/9</td>
+                              <td><a href="#">開始行程</a></td>
+                              <td><a href="#">移除</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-2">
+                        <button id="prevButton" class="btn btn-primary">上一頁</button>
+                      </div>
+                      <div class="col-2">
+                        <button id="nextButton" class="btn btn-primary">下一頁</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      function adjustSidebarBackgroundImage() {
+        var sidebar = document.getElementById('sidebarMenu');
+        var backgroundImage = document.querySelector('.sidebar-background-image');
+
+        var windowHeight = window.innerHeight;
+        var sidebarHeight = sidebar.scrollHeight;
+
+        if (sidebarHeight < windowHeight) {
+          sidebar.style.height = windowHeight + 'px';
+        } else {
+          sidebar.style.height = 'auto';
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', adjustSidebarBackgroundImage);
+      window.addEventListener('resize', adjustSidebarBackgroundImage);
+    </script>
+
+    <script>
+      // 获取表格和页码按钮的引用
+      const table = document.querySelector('.table');
+      const prevButton = document.getElementById('prevButton');
+      const nextButton = document.getElementById('nextButton');
+
+      // 定义每页显示的行数和当前页码
+      const rowsPerPage = 8;
+      let currentPage = 1;
+
+      // 计算总页数
+      const totalRows = table.tBodies[0].rows.length;
+      const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+      // 更新表格显示
+      const updateTableDisplay = () => {
+        // 隐藏所有行
+        for (let row of table.tBodies[0].rows) {
+          row.style.display = 'none';
+        }
+
+        // 计算当前页的起始索引和结束索引
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = startIndex + rowsPerPage;
+
+        // 显示当前页的行
+        for (let i = startIndex; i < endIndex; i++) {
+          if (table.tBodies[0].rows[i]) {
+            table.tBodies[0].rows[i].style.display = '';
+          }
+        }
+
+        // 更新上一页和下一页按钮的状态
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === totalPages;
+      };
+
+      // 初始化表格显示
+      updateTableDisplay();
+
+      // 上一页按钮的点击事件处理程序
+      prevButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateTableDisplay();
+        }
+      });
+
+      // 下一页按钮的点击事件处理程序
+      nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateTableDisplay();
+        }
+      });
+    </script>
+
+
+
+    <script src="assets/bootstrap_5.2.3/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+      integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+      integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+      crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

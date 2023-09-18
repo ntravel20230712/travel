@@ -90,17 +90,19 @@
                         echo "<div class='nav-item dropdown'>";
                         echo "<a href='#' class='nav-link dropdown-toggle' data-bs-toggle='dropdown'>".$_SESSION['mem_name']."會員</a>";
                         echo " <div class='dropdown-menu fade-down m-0'>
-                                    <a href='my_route.html' class='dropdown-item'>未去過行程</a>
-                                    <a href='my_route_history.html' class='dropdown-item'>已去過行程</a>
-                                    <a href='like_attractions.html' class='dropdown-item'>已收藏景點</a>
+                                    <a href='my_route.php' class='dropdown-item'>我的行程</a>
                                     <a href='like_route.html' class='dropdown-item'>已收藏行程</a>
+                                    <a href='like_attractions.html' class='dropdown-item'>已收藏景點</a>
                                     <a href='php/logout_res.php' class='dropdown-item'>登出</a>
                                 </div>";
 
                     }else {
-                        echo "<a href='login.html' class='nav-item nav-link'>登入/註冊</a>";
+                        echo "<a href='login.php' class='nav-item nav-link'>登入/註冊</a>";
                         }
                     ?>
+
+                    <!-- <a href='my_route_history.html' class='dropdown-item'>已去過行程</a> -->
+
                     <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">會員管理</a> -->
                     <!-- <div class="dropdown-menu fade-down m-0">
                         <a href="my_route.html" class="dropdown-item">未去過行程</a>
@@ -111,9 +113,15 @@
                     </div> -->
                 </div>
             </div>
+            
             <div class="nav-item dropdown">
-                <a href="route_custom.html"
-                    class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">試試隨機行程GO&#32;&#10140;</a>
+            <?php
+            
+            require_once("php/random_route.php");
+            echo '<a href=route_detail.php?RouteID=' . $routedata['RouteID'] . '&RouteName=' . $routedata['RouteName']. '&route_update=' . $routedata['route_update'] . '"
+                    class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">試試隨機行程GO&#32;&#10140;</a>';
+
+            ?>
             </div>
             <!-- 未登入前 -->
             <!--<a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">加入我們<i class="fa fa-arrow-right ms-3"></i></a>-->
@@ -477,26 +485,30 @@
                     <a class="btn btn-link" href="about.html">關於我們</a>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <h4 class="text-white mb-3">去哪裡玩</h4>
-                        <a href="attraction_area.html" class="btn btn-link">區域景點瀏覽</a>
-                        <a href="attraction_address.html" class="btn btn-link">地理座標景點瀏覽</a>
-                        <a href="attraction_tag.html" class="btn btn-link">關鍵字景點瀏覽</a>
-                        <a href="attraction_random.html" class="btn btn-link">隨機推薦景點</a>
+                    <h4 class="text-white mb-3">發現景點</h4>
+                    <a class="btn btn-link" href="attraction_show.html">所有景點</a>
+                    <a class="btn btn-link" href="404.html">個性化景點推薦</a>
+                    <a class="btn btn-link" href="404.html">族群特選景點推薦</a>
+                    <a class="btn btn-link" href="404.html">猜你喜歡-景點</a>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <h4 class="text-white mb-3">別人怎麼玩</h4>
-                    <a href="route_area.html" class="btn btn-link">區域行程瀏覽</a>
-                    <a href="route_tag.html" class="btn btn-link">關鍵字行程瀏覽</a>
-                    <a href="route_random.html" class="btn btn-link">隨機推薦行程</a>
+                    <h4 class="text-white mb-3">發現路線</h4>
+                    <a class="btn btn-link" href="route_show.html">所有路線</a>
+                    <a class="btn btn-link" href="404.html">個性化路線推薦</a>
+                    <a class="btn btn-link" href="404.html">族群特選路線推薦</a>
+                    <a class="btn btn-link" href="404.html">猜你喜歡-路線</a>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <h4 class="text-white mb-3">QAQ會員管理</h4>
-                   <a href='my_route.html' class='btn btn-link'>未去過行程</a>
-                    <a href='my_route_history.html' class='btn btn-link'>已去過行程</a>
-                    <a href='like_attractions.html' class='btn btn-link'>已收藏景點</a>
-                    <a href='like_route.html' class='btn btn-link'>已收藏行程</a>
-                    <a href='php/logout_res.php' class='btn btn-link'>登出</a>
-                    </div>      
+                    <h4 class="text-white mb-3">我要推薦</h4>
+                    <a class="btn btn-link" href="404.html">我要推薦景點</a>
+                    <a class="btn btn-link" href="myroute.html">我要推薦路線</a>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="text-white mb-3">會員管理</h4>
+                    <a class="btn btn-link" href="404.html">我的景點</a>
+                    <a class="btn btn-link" href="myroute.html">我的路線</a>
+                    <a class="btn btn-link" href="404.html">登出</a>
+                </div>
 
                 <div class="col-lg-2 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
@@ -548,6 +560,11 @@
 
             <!-- Template Javascript -->
             <script src="js/main.js"></script>
+            <script>
+                window.onload = function() {
+                window.scrollTo(0, 0);
+                }
+            </script>
 </body>
 
 </html>
