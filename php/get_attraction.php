@@ -42,7 +42,7 @@ if (isset($_GET['attractionName'])) {
         echo json_encode($attractionData);
     } else {
         // 查詢失敗，輸出錯誤訊息
-        echo json_encode(array("error" => "無法檢索景點資料。"));
+        echo "<script>alert('無法檢索景點資料。');</script>";
     }    
 }
 function convertWeekNumberToText($weekNumber) {
